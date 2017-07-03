@@ -7,3 +7,9 @@ DataProcessor/stanford-corenlp-python/
 Intermediate/*
 Results/*
 Data/BBN/*
+tmp*.json
+data_orig
+data/*.json
+mid2types
+mids2relation
+name2mids
