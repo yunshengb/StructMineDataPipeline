@@ -25,13 +25,14 @@ def getNes(r, sent):
         addTypesToNes(nes, name, y['@types'])
     else:
       addTypesToNes(nes, name, x['resource']['@types'])
-  print '*'*50
   print nes
+  print '*'*50
   return nes
 
 def addTypesToNes(nes, name, types):
   if types:
-    addToDictValIsList(nes, name, types) # record score???????? for now, aim for recall
+    for type in types.split(','):
+      addToDictValIsList(nes, name, type.strip()) # record score???????? for now, aim for recall
   else: # empty string
     pass # go to dbpedia to find supertype.....................................
 
