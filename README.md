@@ -24,8 +24,9 @@ To generate such json files, you need to provide the following input files (we i
 1. Raw test corpus file (each line as a document) 
 
 ### Results:
-[`Example training data by DBpedia`](data/train.json)
-[`Example test data by DBpedia`](data/test.json)
+* [`Example training data by DBpedia`](data/train.json)
+
+* [`Example test data by DBpedia`](data/test.json)
 
 ## Dependencies
 We will take Ubuntu for example.
@@ -64,7 +65,7 @@ $ ./getInputJsonFile.sh
 ```
 Our example data files are located in ./data folder. You should be able to see these 2 files generated in the same folder - train.json and test.json, after running the above command.
 
-If you use `dbpedia`, modify `getInputJsonFile.sh`, and there is no need to start the `StanfordCoreNLPServer`. It makes API calls to [DBpedia Spotlight](https://github.com/dbpedia-spotlight/dbpedia-spotlight) as in [`code/dbpedia.py`](code/dbpedia.py).
+If you use `dbpedia`, modify `getInputJsonFile.sh`, and there is no need to start the `StanfordCoreNLPServer`. It makes API calls to [DBpedia Spotlight](https://github.com/dbpedia-spotlight/dbpedia-spotlight) as in [`code/dbpedia.py`](code/dbpedia.py). Change the confidence threshold parameter here.
 
 ## Parameters - getInputJsonFile.sh
 Raw train & test files to run on.
