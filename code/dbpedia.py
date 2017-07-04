@@ -1,4 +1,5 @@
 import json, requests, urllib
+from collections import OrderedDict
 
 def dbpediaParse(sent):
   data = { 'text' : sent, 'confidence' : 0} # change the confidence threshold
@@ -17,7 +18,7 @@ def getNes(r, sent):
   r = r['annotation']
   assert(r['@text'] == sent)
   r = r['surfaceForm']
-  nes = {}
+  nes = OrderedDict()
   for x in r:
     name = x['@name']
     if isinstance(x['resource'], list):

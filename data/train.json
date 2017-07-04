@@ -35,8 +35,18 @@
     "articleId": 1, 
     "entityMentions": [
         {
-            "text": "Beijing", 
+            "text": "capitol", 
             "start": 0, 
+            "label": [
+                "Schema:Place", 
+                "DBpedia:Place", 
+                "DBpedia:ArchitecturalStructure", 
+                "DBpedia:Building"
+            ]
+        }, 
+        {
+            "text": "Beijing", 
+            "start": 1, 
             "label": [
                 "Schema:Place", 
                 "DBpedia:Place", 
@@ -46,23 +56,13 @@
         }, 
         {
             "text": "China", 
-            "start": 1, 
+            "start": 2, 
             "label": [
                 "Schema:Place", 
                 "DBpedia:Place", 
                 "DBpedia:PopulatedPlace", 
                 "Schema:Country", 
                 "DBpedia:Country"
-            ]
-        }, 
-        {
-            "text": "capitol", 
-            "start": 2, 
-            "label": [
-                "Schema:Place", 
-                "DBpedia:Place", 
-                "DBpedia:ArchitecturalStructure", 
-                "DBpedia:Building"
             ]
         }
     ], 
@@ -73,20 +73,8 @@
     "articleId": 2, 
     "entityMentions": [
         {
-            "text": "California", 
-            "start": 0, 
-            "label": [
-                "Schema:Place", 
-                "DBpedia:Place", 
-                "DBpedia:PopulatedPlace", 
-                "DBpedia:Region", 
-                "Schema:AdministrativeArea", 
-                "DBpedia:AdministrativeRegion"
-            ]
-        }, 
-        {
             "text": "USA", 
-            "start": 1, 
+            "start": 0, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Organization", 
@@ -100,6 +88,18 @@
                 "Schema:Country", 
                 "DBpedia:Country"
             ]
+        }, 
+        {
+            "text": "California", 
+            "start": 1, 
+            "label": [
+                "Schema:Place", 
+                "DBpedia:Place", 
+                "DBpedia:PopulatedPlace", 
+                "DBpedia:Region", 
+                "Schema:AdministrativeArea", 
+                "DBpedia:AdministrativeRegion"
+            ]
         }
     ], 
     "sentId": 0
@@ -109,8 +109,20 @@
     "articleId": 3, 
     "entityMentions": [
         {
-            "text": "located", 
+            "text": "Ronald Reagan UCLA Medical Center", 
             "start": 0, 
+            "label": [
+                "Schema:Place", 
+                "DBpedia:Place", 
+                "DBpedia:ArchitecturalStructure", 
+                "DBpedia:Building", 
+                "Schema:Hospital", 
+                "DBpedia:Hospital"
+            ]
+        }, 
+        {
+            "text": "located", 
+            "start": 1, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Organization", 
@@ -122,18 +134,6 @@
                 "DBpedia:Place", 
                 "DBpedia:PopulatedPlace", 
                 "DBpedia:Settlement"
-            ]
-        }, 
-        {
-            "text": "Ronald Reagan UCLA Medical Center", 
-            "start": 1, 
-            "label": [
-                "Schema:Place", 
-                "DBpedia:Place", 
-                "DBpedia:ArchitecturalStructure", 
-                "DBpedia:Building", 
-                "Schema:Hospital", 
-                "DBpedia:Hospital"
             ]
         }, 
         {
@@ -156,21 +156,21 @@
     "articleId": 4, 
     "entityMentions": [
         {
-            "text": "Aspirin", 
-            "start": 0, 
-            "label": [
-                "DBpedia:Drug"
-            ]
-        }, 
-        {
             "text": "Obama", 
-            "start": 1, 
+            "start": 0, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Person", 
                 "Http://xmlns.com/foaf/0.1/Person", 
                 "DBpedia:Person", 
                 "DBpedia:OfficeHolder"
+            ]
+        }, 
+        {
+            "text": "Aspirin", 
+            "start": 1, 
+            "label": [
+                "DBpedia:Drug"
             ]
         }
     ], 
@@ -222,15 +222,17 @@
     "articleId": 6, 
     "entityMentions": [
         {
-            "text": "sugar", 
+            "text": "glucose", 
             "start": 0, 
             "label": [
+                "DBpedia:Biomolecule", 
+                "DBpedia:Protein", 
                 "DBpedia:ChemicalSubstance", 
                 "DBpedia:ChemicalCompound"
             ]
         }, 
         {
-            "text": "high", 
+            "text": "Diabetes", 
             "start": 1, 
             "label": [
                 "DBpedia:Disease"
@@ -244,8 +246,15 @@
             ]
         }, 
         {
-            "text": "levels", 
+            "text": "high", 
             "start": 3, 
+            "label": [
+                "DBpedia:Disease"
+            ]
+        }, 
+        {
+            "text": "levels", 
+            "start": 4, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Person", 
@@ -254,20 +263,11 @@
             ]
         }, 
         {
-            "text": "glucose", 
-            "start": 4, 
-            "label": [
-                "DBpedia:Biomolecule", 
-                "DBpedia:Protein", 
-                "DBpedia:ChemicalSubstance", 
-                "DBpedia:ChemicalCompound"
-            ]
-        }, 
-        {
-            "text": "Diabetes", 
+            "text": "sugar", 
             "start": 5, 
             "label": [
-                "DBpedia:Disease"
+                "DBpedia:ChemicalSubstance", 
+                "DBpedia:ChemicalCompound"
             ]
         }
     ], 
@@ -278,14 +278,14 @@
     "articleId": 7, 
     "entityMentions": [
         {
-            "text": "volvulus", 
+            "text": "diaphragmatic rupture", 
             "start": 0, 
             "label": [
                 "DBpedia:Disease"
             ]
         }, 
         {
-            "text": "diaphragmatic rupture", 
+            "text": "volvulus", 
             "start": 1, 
             "label": [
                 "DBpedia:Disease"
@@ -299,20 +299,20 @@
     "articleId": 8, 
     "entityMentions": [
         {
-            "text": "cure", 
+            "text": "Aspirin", 
             "start": 0, 
+            "label": [
+                "DBpedia:Drug"
+            ]
+        }, 
+        {
+            "text": "cure", 
+            "start": 1, 
             "label": [
                 "Schema:Place", 
                 "DBpedia:Place", 
                 "Schema:LandmarksOrHistoricalBuildings", 
                 "DBpedia:HistoricPlace"
-            ]
-        }, 
-        {
-            "text": "Aspirin", 
-            "start": 1, 
-            "label": [
-                "DBpedia:Drug"
             ]
         }
     ], 
@@ -357,11 +357,10 @@
     "articleId": 11, 
     "entityMentions": [
         {
-            "text": "venous", 
+            "text": "atrial flutter", 
             "start": 0, 
             "label": [
-                "DBpedia:Disease", 
-                "DBpedia:AnatomicalStructure"
+                "DBpedia:Disease"
             ]
         }, 
         {
@@ -385,8 +384,16 @@
             ]
         }, 
         {
-            "text": "hospital", 
+            "text": "venous", 
             "start": 3, 
+            "label": [
+                "DBpedia:Disease", 
+                "DBpedia:AnatomicalStructure"
+            ]
+        }, 
+        {
+            "text": "hospital", 
+            "start": 4, 
             "label": [
                 "Schema:Place", 
                 "DBpedia:Place", 
@@ -394,13 +401,6 @@
                 "DBpedia:Building", 
                 "Schema:Hospital", 
                 "DBpedia:Hospital"
-            ]
-        }, 
-        {
-            "text": "atrial flutter", 
-            "start": 4, 
-            "label": [
-                "DBpedia:Disease"
             ]
         }
     ], 
@@ -411,14 +411,14 @@
     "articleId": 12, 
     "entityMentions": [
         {
-            "text": "induced", 
+            "text": "arrhythmia", 
             "start": 0, 
             "label": [
                 "DBpedia:Disease"
             ]
         }, 
         {
-            "text": "arrhythmia", 
+            "text": "induced", 
             "start": 1, 
             "label": [
                 "DBpedia:Disease"
@@ -466,17 +466,17 @@
             ]
         }, 
         {
-            "text": "bipolar", 
+            "text": "left atrial", 
             "start": 1, 
             "label": [
-                "DBpedia:Disease"
+                "DBpedia:AnatomicalStructure"
             ]
         }, 
         {
-            "text": "left atrial", 
+            "text": "bipolar", 
             "start": 2, 
             "label": [
-                "DBpedia:AnatomicalStructure"
+                "DBpedia:Disease"
             ]
         }
     ], 
@@ -487,88 +487,16 @@
     "articleId": 15, 
     "entityMentions": [
         {
-            "text": "superior", 
-            "start": 0, 
-            "label": [
-                "DBpedia:AnatomicalStructure", 
-                "DBpedia:Artery"
-            ]
-        }, 
-        {
-            "text": "sinus", 
-            "start": 1, 
-            "label": [
-                "DBpedia:AnatomicalStructure"
-            ]
-        }, 
-        {
-            "text": "temporary", 
-            "start": 2, 
-            "label": [
-                "Schema:Place", 
-                "DBpedia:Place", 
-                "DBpedia:ArchitecturalStructure", 
-                "DBpedia:Infrastructure", 
-                "DBpedia:RouteOfTransportation", 
-                "DBpedia:RailwayLine"
-            ]
-        }, 
-        {
-            "text": "power", 
-            "start": 3, 
-            "label": [
-                "DBpedia:TopicalConcept", 
-                "DBpedia:Genre", 
-                "DBpedia:MusicGenre"
-            ]
-        }, 
-        {
-            "text": "terminated", 
-            "start": 4, 
-            "label": [
-                "DBpedia:Disease"
-            ]
-        }, 
-        {
-            "text": "nodal", 
-            "start": 5, 
-            "label": [
-                "DBpedia:Biomolecule", 
-                "DBpedia:Protein"
-            ]
-        }, 
-        {
             "text": "pacing", 
-            "start": 6, 
+            "start": 0, 
             "label": [
                 "DBpedia:Activity", 
                 "DBpedia:Sport"
             ]
         }, 
         {
-            "text": "atrial flutter", 
-            "start": 7, 
-            "label": [
-                "DBpedia:Disease"
-            ]
-        }, 
-        {
-            "text": "arrest", 
-            "start": 8, 
-            "label": [
-                "DBpedia:Disease"
-            ]
-        }, 
-        {
-            "text": "mitral annulus", 
-            "start": 9, 
-            "label": [
-                "DBpedia:AnatomicalStructure"
-            ]
-        }, 
-        {
             "text": "SN", 
-            "start": 10, 
+            "start": 1, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Organization", 
@@ -583,18 +511,90 @@
             ]
         }, 
         {
+            "text": "nodal", 
+            "start": 2, 
+            "label": [
+                "DBpedia:Biomolecule", 
+                "DBpedia:Protein"
+            ]
+        }, 
+        {
+            "text": "temporary", 
+            "start": 3, 
+            "label": [
+                "Schema:Place", 
+                "DBpedia:Place", 
+                "DBpedia:ArchitecturalStructure", 
+                "DBpedia:Infrastructure", 
+                "DBpedia:RouteOfTransportation", 
+                "DBpedia:RailwayLine"
+            ]
+        }, 
+        {
+            "text": "superior", 
+            "start": 4, 
+            "label": [
+                "DBpedia:AnatomicalStructure", 
+                "DBpedia:Artery"
+            ]
+        }, 
+        {
+            "text": "atrial flutter", 
+            "start": 5, 
+            "label": [
+                "DBpedia:Disease"
+            ]
+        }, 
+        {
+            "text": "power", 
+            "start": 6, 
+            "label": [
+                "DBpedia:TopicalConcept", 
+                "DBpedia:Genre", 
+                "DBpedia:MusicGenre"
+            ]
+        }, 
+        {
             "text": "scar", 
-            "start": 11, 
+            "start": 7, 
+            "label": [
+                "DBpedia:Disease"
+            ]
+        }, 
+        {
+            "text": "mitral annulus", 
+            "start": 8, 
+            "label": [
+                "DBpedia:AnatomicalStructure"
+            ]
+        }, 
+        {
+            "text": "sinus", 
+            "start": 9, 
+            "label": [
+                "DBpedia:AnatomicalStructure"
+            ]
+        }, 
+        {
+            "text": "arrest", 
+            "start": 10, 
             "label": [
                 "DBpedia:Disease"
             ]
         }, 
         {
             "text": "pulmonary vein", 
-            "start": 12, 
+            "start": 11, 
             "label": [
                 "DBpedia:AnatomicalStructure", 
                 "DBpedia:Vein"
+            ]
+        }, 
+        {
+            "text": "terminated", 
+            "start": 12, 
+            "label": [
+                "DBpedia:Disease"
             ]
         }
     ], 
@@ -605,18 +605,10 @@
     "articleId": 16, 
     "entityMentions": [
         {
-            "text": "There", 
+            "text": "pacemaker", 
             "start": 0, 
             "label": [
-                "Schema:CreativeWork", 
-                "DBpedia:Work", 
-                "DBpedia:Software", 
-                "DBpedia:VideoGame", 
-                "Schema:Place", 
-                "DBpedia:Place", 
-                "DBpedia:PopulatedPlace", 
-                "Schema:Country", 
-                "DBpedia:Country"
+                "DBpedia:AnatomicalStructure"
             ]
         }, 
         {
@@ -636,10 +628,18 @@
             ]
         }, 
         {
-            "text": "pacemaker", 
+            "text": "There", 
             "start": 2, 
             "label": [
-                "DBpedia:AnatomicalStructure"
+                "Schema:CreativeWork", 
+                "DBpedia:Work", 
+                "DBpedia:Software", 
+                "DBpedia:VideoGame", 
+                "Schema:Place", 
+                "DBpedia:Place", 
+                "DBpedia:PopulatedPlace", 
+                "Schema:Country", 
+                "DBpedia:Country"
             ]
         }, 
         {
@@ -659,47 +659,20 @@
     "articleId": 17, 
     "entityMentions": [
         {
-            "text": "anterior", 
+            "text": "CT", 
             "start": 0, 
-            "label": [
-                "DBpedia:AnatomicalStructure", 
-                "DBpedia:Artery"
-            ]
-        }, 
-        {
-            "text": "blood vessel", 
-            "start": 1, 
-            "label": [
-                "DBpedia:AnatomicalStructure"
-            ]
-        }, 
-        {
-            "text": "cardiac", 
-            "start": 2, 
-            "label": [
-                "DBpedia:AnatomicalStructure"
-            ]
-        }, 
-        {
-            "text": "wall", 
-            "start": 3, 
             "label": [
                 "Schema:Place", 
                 "DBpedia:Place", 
-                "DBpedia:ArchitecturalStructure", 
-                "DBpedia:Building"
-            ]
-        }, 
-        {
-            "text": "atrium", 
-            "start": 4, 
-            "label": [
-                "DBpedia:AnatomicalStructure"
+                "DBpedia:PopulatedPlace", 
+                "DBpedia:Region", 
+                "Schema:AdministrativeArea", 
+                "DBpedia:AdministrativeRegion"
             ]
         }, 
         {
             "text": "running", 
-            "start": 5, 
+            "start": 1, 
             "label": [
                 "Schema:CreativeWork", 
                 "DBpedia:Work", 
@@ -712,15 +685,37 @@
         }, 
         {
             "text": "left circumflex artery", 
-            "start": 6, 
+            "start": 2, 
             "label": [
                 "DBpedia:AnatomicalStructure", 
                 "DBpedia:Artery"
             ]
         }, 
         {
+            "text": "anterior", 
+            "start": 3, 
+            "label": [
+                "DBpedia:AnatomicalStructure", 
+                "DBpedia:Artery"
+            ]
+        }, 
+        {
+            "text": "atrium", 
+            "start": 4, 
+            "label": [
+                "DBpedia:AnatomicalStructure"
+            ]
+        }, 
+        {
+            "text": "blood vessel", 
+            "start": 5, 
+            "label": [
+                "DBpedia:AnatomicalStructure"
+            ]
+        }, 
+        {
             "text": "revealed", 
-            "start": 7, 
+            "start": 6, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Person", 
@@ -729,15 +724,20 @@
             ]
         }, 
         {
-            "text": "CT", 
-            "start": 8, 
+            "text": "wall", 
+            "start": 7, 
             "label": [
                 "Schema:Place", 
                 "DBpedia:Place", 
-                "DBpedia:PopulatedPlace", 
-                "DBpedia:Region", 
-                "Schema:AdministrativeArea", 
-                "DBpedia:AdministrativeRegion"
+                "DBpedia:ArchitecturalStructure", 
+                "DBpedia:Building"
+            ]
+        }, 
+        {
+            "text": "cardiac", 
+            "start": 8, 
+            "label": [
+                "DBpedia:AnatomicalStructure"
             ]
         }
     ], 
@@ -755,8 +755,20 @@
             ]
         }, 
         {
-            "text": "SN", 
+            "text": "A 3", 
             "start": 1, 
+            "label": [
+                "Schema:Place", 
+                "DBpedia:Place", 
+                "DBpedia:ArchitecturalStructure", 
+                "DBpedia:Infrastructure", 
+                "DBpedia:RouteOfTransportation", 
+                "DBpedia:Road"
+            ]
+        }, 
+        {
+            "text": "SN", 
+            "start": 2, 
             "label": [
                 "Schema:Place", 
                 "DBpedia:Place", 
@@ -769,18 +781,6 @@
                 "DBpedia:Organisation", 
                 "DBpedia:PoliticalParty"
             ]
-        }, 
-        {
-            "text": "A 3", 
-            "start": 2, 
-            "label": [
-                "Schema:Place", 
-                "DBpedia:Place", 
-                "DBpedia:ArchitecturalStructure", 
-                "DBpedia:Infrastructure", 
-                "DBpedia:RouteOfTransportation", 
-                "DBpedia:Road"
-            ]
         }
     ], 
     "sentId": 0
@@ -790,35 +790,35 @@
     "articleId": 19, 
     "entityMentions": [
         {
-            "text": "sinoatrial", 
-            "start": 0, 
-            "label": [
-                "DBpedia:AnatomicalStructure"
-            ]
-        }, 
-        {
-            "text": "atrial", 
-            "start": 1, 
-            "label": [
-                "DBpedia:Disease"
-            ]
-        }, 
-        {
-            "text": "atrial fibrillation", 
-            "start": 2, 
-            "label": [
-                "DBpedia:Disease"
-            ]
-        }, 
-        {
             "text": "reported", 
-            "start": 3, 
+            "start": 0, 
             "label": [
                 "Schema:CreativeWork", 
                 "DBpedia:Work", 
                 "DBpedia:MusicalWork", 
                 "Schema:MusicAlbum", 
                 "DBpedia:Album"
+            ]
+        }, 
+        {
+            "text": "dysfunction", 
+            "start": 1, 
+            "label": [
+                "DBpedia:Disease"
+            ]
+        }, 
+        {
+            "text": "sinoatrial", 
+            "start": 2, 
+            "label": [
+                "DBpedia:AnatomicalStructure"
+            ]
+        }, 
+        {
+            "text": "atrial fibrillation", 
+            "start": 3, 
+            "label": [
+                "DBpedia:Disease"
             ]
         }, 
         {
@@ -838,7 +838,7 @@
             ]
         }, 
         {
-            "text": "dysfunction", 
+            "text": "atrial", 
             "start": 5, 
             "label": [
                 "DBpedia:Disease"
@@ -868,20 +868,20 @@
             ]
         }, 
         {
-            "text": "long", 
-            "start": 1, 
-            "label": [
-                "DBpedia:Disease"
-            ]
-        }, 
-        {
             "text": "However", 
-            "start": 2, 
+            "start": 1, 
             "label": [
                 "Schema:CreativeWork", 
                 "DBpedia:Work", 
                 "DBpedia:MusicalWork", 
                 "DBpedia:Single"
+            ]
+        }, 
+        {
+            "text": "long", 
+            "start": 2, 
+            "label": [
+                "DBpedia:Disease"
             ]
         }
     ], 
@@ -892,16 +892,8 @@
     "articleId": 21, 
     "entityMentions": [
         {
-            "text": "vagal", 
-            "start": 0, 
-            "label": [
-                "DBpedia:AnatomicalStructure", 
-                "DBpedia:Nerve"
-            ]
-        }, 
-        {
             "text": "response", 
-            "start": 1, 
+            "start": 0, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Organization", 
@@ -912,10 +904,18 @@
         }, 
         {
             "text": "pulmonary vein", 
-            "start": 2, 
+            "start": 1, 
             "label": [
                 "DBpedia:AnatomicalStructure", 
                 "DBpedia:Vein"
+            ]
+        }, 
+        {
+            "text": "vagal", 
+            "start": 2, 
+            "label": [
+                "DBpedia:AnatomicalStructure", 
+                "DBpedia:Nerve"
             ]
         }
     ], 
@@ -926,15 +926,14 @@
     "articleId": 22, 
     "entityMentions": [
         {
-            "text": "mechanism", 
+            "text": "arrest", 
             "start": 0, 
             "label": [
-                "DBpedia:Biomolecule", 
-                "DBpedia:Protein"
+                "DBpedia:Disease"
             ]
         }, 
         {
-            "text": "arrest", 
+            "text": "injury", 
             "start": 1, 
             "label": [
                 "DBpedia:Disease"
@@ -964,10 +963,11 @@
             ]
         }, 
         {
-            "text": "injury", 
+            "text": "mechanism", 
             "start": 4, 
             "label": [
-                "DBpedia:Disease"
+                "DBpedia:Biomolecule", 
+                "DBpedia:Protein"
             ]
         }, 
         {
@@ -1027,48 +1027,15 @@
     "articleId": 24, 
     "entityMentions": [
         {
-            "text": "anterior", 
+            "text": "left atrium", 
             "start": 0, 
-            "label": [
-                "DBpedia:AnatomicalStructure", 
-                "DBpedia:Artery"
-            ]
-        }, 
-        {
-            "text": "posterior", 
-            "start": 1, 
             "label": [
                 "DBpedia:AnatomicalStructure"
             ]
         }, 
         {
-            "text": "high", 
-            "start": 2, 
-            "label": [
-                "DBpedia:Disease"
-            ]
-        }, 
-        {
-            "text": "variable", 
-            "start": 3, 
-            "label": [
-                "DBpedia:Species", 
-                "DBpedia:Eukaryote", 
-                "DBpedia:Animal", 
-                "DBpedia:Insect"
-            ]
-        }, 
-        {
-            "text": "running", 
-            "start": 4, 
-            "label": [
-                "DBpedia:Activity", 
-                "DBpedia:Sport"
-            ]
-        }, 
-        {
             "text": "SN", 
-            "start": 5, 
+            "start": 1, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Organization", 
@@ -1083,22 +1050,23 @@
             ]
         }, 
         {
-            "text": "left atrium", 
-            "start": 6, 
+            "text": "anterior", 
+            "start": 2, 
             "label": [
-                "DBpedia:AnatomicalStructure"
+                "DBpedia:AnatomicalStructure", 
+                "DBpedia:Artery"
             ]
         }, 
         {
-            "text": "artery", 
-            "start": 7, 
+            "text": "atrium", 
+            "start": 3, 
             "label": [
                 "DBpedia:AnatomicalStructure"
             ]
         }, 
         {
             "text": "The", 
-            "start": 8, 
+            "start": 4, 
             "label": [
                 "Schema:CreativeWork", 
                 "DBpedia:Work", 
@@ -1113,8 +1081,18 @@
             ]
         }, 
         {
+            "text": "variable", 
+            "start": 5, 
+            "label": [
+                "DBpedia:Species", 
+                "DBpedia:Eukaryote", 
+                "DBpedia:Animal", 
+                "DBpedia:Insect"
+            ]
+        }, 
+        {
             "text": "rarely", 
-            "start": 9, 
+            "start": 6, 
             "label": [
                 "DBpedia:Agent", 
                 "Schema:Organization", 
@@ -1125,7 +1103,29 @@
             ]
         }, 
         {
-            "text": "atrium", 
+            "text": "high", 
+            "start": 7, 
+            "label": [
+                "DBpedia:Disease"
+            ]
+        }, 
+        {
+            "text": "running", 
+            "start": 8, 
+            "label": [
+                "DBpedia:Activity", 
+                "DBpedia:Sport"
+            ]
+        }, 
+        {
+            "text": "posterior", 
+            "start": 9, 
+            "label": [
+                "DBpedia:AnatomicalStructure"
+            ]
+        }, 
+        {
+            "text": "artery", 
             "start": 10, 
             "label": [
                 "DBpedia:AnatomicalStructure"
@@ -1139,10 +1139,19 @@
     "articleId": 25, 
     "entityMentions": [
         {
-            "text": "artery", 
+            "text": "SN", 
             "start": 0, 
             "label": [
-                "DBpedia:AnatomicalStructure"
+                "Schema:Place", 
+                "DBpedia:Place", 
+                "DBpedia:PopulatedPlace", 
+                "DBpedia:Region", 
+                "Schema:AdministrativeArea", 
+                "DBpedia:AdministrativeRegion", 
+                "DBpedia:Agent", 
+                "Schema:Organization", 
+                "DBpedia:Organisation", 
+                "DBpedia:PoliticalParty"
             ]
         }, 
         {
@@ -1162,26 +1171,17 @@
             ]
         }, 
         {
-            "text": "SN", 
+            "text": "avoid", 
             "start": 2, 
             "label": [
-                "Schema:Place", 
-                "DBpedia:Place", 
-                "DBpedia:PopulatedPlace", 
-                "DBpedia:Region", 
-                "Schema:AdministrativeArea", 
-                "DBpedia:AdministrativeRegion", 
-                "DBpedia:Agent", 
-                "Schema:Organization", 
-                "DBpedia:Organisation", 
-                "DBpedia:PoliticalParty"
+                "DBpedia:Disease"
             ]
         }, 
         {
-            "text": "avoid", 
+            "text": "artery", 
             "start": 3, 
             "label": [
-                "DBpedia:Disease"
+                "DBpedia:AnatomicalStructure"
             ]
         }
     ], 
@@ -1192,29 +1192,15 @@
     "articleId": 26, 
     "entityMentions": [
         {
-            "text": "sinoatrial", 
+            "text": "dysfunction", 
             "start": 0, 
-            "label": [
-                "DBpedia:AnatomicalStructure"
-            ]
-        }, 
-        {
-            "text": "atrial", 
-            "start": 1, 
-            "label": [
-                "DBpedia:Disease"
-            ]
-        }, 
-        {
-            "text": "atrial fibrillation", 
-            "start": 2, 
             "label": [
                 "DBpedia:Disease"
             ]
         }, 
         {
             "text": "reported", 
-            "start": 3, 
+            "start": 1, 
             "label": [
                 "Schema:CreativeWork", 
                 "DBpedia:Work", 
@@ -1224,8 +1210,15 @@
             ]
         }, 
         {
+            "text": "atrial", 
+            "start": 2, 
+            "label": [
+                "DBpedia:Disease"
+            ]
+        }, 
+        {
             "text": "SN", 
-            "start": 4, 
+            "start": 3, 
             "label": [
                 "Schema:Place", 
                 "DBpedia:Place", 
@@ -1240,7 +1233,14 @@
             ]
         }, 
         {
-            "text": "dysfunction", 
+            "text": "sinoatrial", 
+            "start": 4, 
+            "label": [
+                "DBpedia:AnatomicalStructure"
+            ]
+        }, 
+        {
+            "text": "atrial fibrillation", 
             "start": 5, 
             "label": [
                 "DBpedia:Disease"
