@@ -13,3 +13,7 @@ data/*.json
 mid2types
 mids2relation
 name2mids
+code/stanza
+freebase.tar.gz
+project_venv
+

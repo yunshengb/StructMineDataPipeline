@@ -43,6 +43,14 @@ $ wget http://nlp.stanford.edu/software/stanford-corenlp-full-2016-10-31.zip
 $ unzip stanford-corenlp-full-2016-10-31.zip
 ```
 
+## Virtual Python Environment
+In case you do not have sudo access,
+```
+virtualenv project_venv
+source project_venv/bin/activate
+pip install -r requirements.txt
+```
+
 ## Example Run
 Run CoTypeDataProcessing to generate Json input files of CoType for the example training and test raw corpus
 
@@ -51,6 +59,8 @@ $ java -mx4g -cp "code/stanford-corenlp-full-2016-10-31/*" edu.stanford.nlp.pipe
 $ ./getInputJsonFile.sh  
 ```
 Our example data files are located in ./data folder. You should be able to see these 2 files generated in the same folder - train.json and test.json, after running the above command.
+
+If you use `dbpedia`, modify `getInputJsonFile.sh`, and there is no need to start the `StanfordCoreNLPServer`. It makes API calls to [DBpedia Spotlight](https://github.com/dbpedia-spotlight/dbpedia-spotlight) as in [`code/dbpedia.py`](code/dbpedia.py).
 
 ## Parameters - getInputJsonFile.sh
 Raw train & test files to run on.
@@ -76,9 +86,9 @@ Target mention type mapping files.
 emTypeMapFile='./data/emTypeMap.txt'
 rmTypeMapFile='./data/rmTypeMap.txt' # leave it empty if only entity mention is needed
 ```
-Parsing tool to do sentence splitting, tokenization, entity mention detection, etc. It can be 'nltk' or 'stanford'.
+Parsing tool to do sentence splitting, tokenization, entity mention detection, etc. It can be 'nltk', 'stanford', or `dbpedia`.
 ```
-parseTool='stanford'
+parseTool='dbpedia'
 ```
 Set this parameter to be true if you already have a pretrained model and only need to generate test json file.
 ```

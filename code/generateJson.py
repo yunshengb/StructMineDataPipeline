@@ -2,7 +2,9 @@ import sys
 import nltk
 from stanza.nlp.corenlp import CoreNLPClient
 import json
+from collections import OrderedDict
 from distantSupervision import linkToFB, getNegRMs
+from dbpedia import dbpediaParse
 
 
 class NLPParser(object):
@@ -19,12 +21,15 @@ class NLPParser(object):
     def parse(self, sent):
         result = self.parser.annotate(sent)
         tokens_list, ner_list = [], []
+        print result.sentences
         for sent in result.sentences:
             tokens, ner = [], []
             currNERType = 'O'
             currNER = ''
             for token in sent:
+                print 'token', token
                 tokens += [token.word]
+                print 'tokens', tokens
                 if token.ner == 'O':
                   if currNER != '':
                     ner.append(currNER.strip())
@@ -59,6 +64,7 @@ def extract_np(data):
 
     return nps
 
+
 def leaves(tree):
     #Finds NP (nounphrase) leaf nodes of a chunk tree.
     nps = []
@@ -67,13 +73,28 @@ def leaves(tree):
 
     return extract_np(nps)
 
+def procDocNltkDbpedia(doc, parseTool):
+  sents = nltk.sent_tokenize(doc)
+  tokens_list = []
+  nps_list = []
+  for sent in sents:
+    tokens = nltk.word_tokenize(sent)
+    if len(tokens) == 0:
+      continue
+    if parseTool == 'nltk':
+      nps = leaves(cp.parse(nltk.pos_tag(tokens)))
+    else:
+      nps = dbpediaParse(sent)
+    if len(nps) == 0:
+      continue
+    tokens_list.append(tokens)
+    nps_list.append(nps)
+  return tokens_list, nps_list
+
 
 def writeToJson(inFile, outFile, parseTool, isTrain, mentionType):
-  if parseTool == 'stanford':
-    useNLTK = False
-  elif parseTool == 'nltk':
-    useNLTK = True
-  else:
+  if parseTool != 'stanford' and parseTool != 'nltk' and \
+  parseTool != 'dbpedia':
     raise Exception('parse tool has to be \'stanford\' or \'nltk\'')
 
   grammar = r"""
@@ -88,22 +109,13 @@ def writeToJson(inFile, outFile, parseTool, isTrain, mentionType):
     articleId = 0
     for line in fin:
       doc = line.strip('\r\n')
-      if useNLTK:
-        sents = nltk.sent_tokenize(doc)
-        tokens_list = []
-        nps_list = []
-        for sent in sents:
-          tokens = nltk.word_tokenize(sent)
-          if len(tokens) == 0:
-            continue
-          nps = leaves(cp.parse(nltk.pos_tag(tokens)))
-          if len(nps) == 0:
-            continue
-          tokens_list.append(tokens)
-          nps_list.append(nps)
+      print 'Parse:', doc
+      if parseTool != 'stanford':
+        tokens_list, nps_list = procDocNltkDbpedia(doc, parseTool)
       else:
         parser = NLPParser()
         tokens_list, nps_list = parser.parse(doc)
+        print tokens_list, nps_list
 
       sentId = 0
       for i in range(len(tokens_list)):
@@ -118,6 +130,8 @@ def writeToJson(inFile, outFile, parseTool, isTrain, mentionType):
           entityMention = dict()
           entityMention['text'] = np
           entityMention['label'] = 'None'
+          if parseTool == 'dbpedia':
+            entityMention['label'] = nps[np] # dbpedia returns the types
           entityMention['start'] = start
           entityMentions.append(entityMention)
           start += 1
@@ -142,6 +156,14 @@ def writeToJson(inFile, outFile, parseTool, isTrain, mentionType):
       articleId += 1
 
 
+# Convert ./tmp1.json to pretty formatted json output.
+def tmp1ToOutput(inFile, outFile):
+  with open(inFile, 'r') as fin, open(outFile, 'w') as fout:
+    for line in fin:
+      json.dump(json.loads(line, object_pairs_hook=OrderedDict), fout, indent=4)
+      fout.write('\n')
+
+
 inFile = sys.argv[1]
 outFile = sys.argv[2]
 parseTool = sys.argv[3]
@@ -151,16 +173,20 @@ else:
   isTrain = False
 mentionType = sys.argv[5]
 
-if isTrain:
+if isTrain: # for train.json
   entityTypesFname = sys.argv[6]
   relationTypesFname = sys.argv[7]
-  freebase_dir = sys.argv[8]
+  freebase_dir = '/media/My Passport/freebase' # changed by yba
   print('start generating candidate entity mentions')
   writeToJson(inFile, './tmp1.json', parseTool, isTrain, mentionType)
-  print('start linking to freebase')
-  linkToFB('./tmp1.json', './tmp2.json', mentionType, entityTypesFname, relationTypesFname, freebase_dir)
-  print('start generating negative examples')
-  getNegRMs('./tmp2.json', outFile)
-else:
+  if parseTool == 'dbpedia':
+     tmp1ToOutput('./tmp1.json', outFile)
+  else:
+    print('start linking to freebase')
+    linkToFB('./tmp1.json', './tmp2.json', mentionType, entityTypesFname, relationTypesFname, freebase_dir)
+    print('start generating negative examples')
+    getNegRMs('./tmp2.json', outFile)
+else: # for test.json
   writeToJson(inFile, outFile, parseTool, isTrain, mentionType)
-
+  if parseTool == 'dbpedia':
+     tmp1ToOutput('./tmp1.json', outFile)

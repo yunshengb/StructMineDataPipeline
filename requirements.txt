@@ -1,0 +1,17 @@
+argparse==1.2.1
+certifi==2017.04.17
+chardet==3.0.4
+distribute==0.6.24
+idna==2.5
+nltk==3.2.4
+numpy==1.13.0
+pexpect==4.2.1
+protobuf==3.3.0
+ptyprocess==0.5.2
+requests==2.18.1
+six==1.10.0
+-e git+https://github.com/stanfordnlp/stanza.git@27a77b1ea28336f34176abac242f8a874c63fe77#egg=stanza-dev
+tqdm==4.14.0
+ujson==1.35
+urllib3==1.21.1
+wsgiref==0.1.2
