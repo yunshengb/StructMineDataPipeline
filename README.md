@@ -23,6 +23,10 @@ To generate such json files, you need to provide the following input files (we i
 ### Test:
 1. Raw test corpus file (each line as a document) 
 
+### Results:
+[`Example training data by DBpedia`](data/train.json)
+[`Example test data by DBpedia`](data/test.json)
+
 ## Dependencies
 We will take Ubuntu for example.
 
@@ -86,7 +90,7 @@ Target mention type mapping files.
 emTypeMapFile='./data/emTypeMap.txt'
 rmTypeMapFile='./data/rmTypeMap.txt' # leave it empty if only entity mention is needed
 ```
-Parsing tool to do sentence splitting, tokenization, entity mention detection, etc. It can be 'nltk', 'stanford', or `dbpedia`.
+Parsing tool to do sentence splitting, tokenization, entity mention detection, etc. It can be 'nltk', 'stanford', or 'dbpedia'.
 ```
 parseTool='dbpedia'
 ```
