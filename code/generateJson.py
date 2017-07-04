@@ -188,5 +188,3 @@ if isTrain: # for train.json
     getNegRMs('./tmp2.json', outFile)
 else: # for test.json
   writeToJson(inFile, outFile, parseTool, isTrain, mentionType)
-  if parseTool == 'dbpedia':
-     tmp1ToOutput('./tmp1.json', outFile)
