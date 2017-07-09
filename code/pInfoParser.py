@@ -11,7 +11,7 @@ MALE = set(['male', 'man', 'dad', 'daddy', 'father', 'grandfather', \
 FEMALE = set(['female', 'woman', 'mom', 'mother', 'mommy', 'grandmother', \
 'grand-mother', 'daughter', 'girl', 'aunt', 'lady', 'wife'])
 
-def genderIdentification(sent):
+def detectGender(sent):
   rtn = []
   for word in word_tokenize(sent): # split a sentence into words
     checkWord(word, MALE, 'male', rtn)
@@ -23,26 +23,32 @@ def checkWord(word, set, label, li):
     if w.lower() == word.lower():
       li.append({'gender': label, 'gender_found_from': w})
 
-def testAllDocsIn(dir):
+def detectAge(sent):
+  rtn = []
+  for str in re.findall(r'\d+(?:-)?year(?:s)?(?: )?(?:-)?old', sent, re.I):
+    for i in re.findall(r'\d+', str):
+      rtn.append({'age': i, 'age_found_from': str})
+  return rtn
+
+def testAllDocsIn(dir, info_name, info_n):
   normal_docs = []
   conflicted_g_info_docs = []
   no_g_info_docs = []
-  docs = {'normal': normal_docs, 'no_g_info': conflicted_g_info_docs, \
-  'conflicted_g_info': no_g_info_docs}
   files = sort_nicely(glob.glob('%s/*.txt' % dir))
   for filename in files:
     with open(filename, 'r') as fin:
       doc = {'id': filename.split('/')[-1]}
       g_info = []
-      doc['g_info'] = g_info
+      doc[info_n] = g_info
       genders = set()
       for line in fin:
         for sent in sent_tokenize(line): # split a document into sentences
-          g = genderIdentification(sent)
-          if g:
-            g_info.append({'sent': sent, 'sent_g_info': g})
-            for x in g:
-              genders.add(x['gender'])
+          g = detectGender(sent)
+          if not g:
+            continue
+          g_info.append({'sent': sent, 'sent_%s' % info_n: g})
+          for x in g:
+            genders.add(x[info_name])
     # Classify the document.
     if len(genders) == 1:
       normal_docs.append(doc)
@@ -59,16 +65,16 @@ def testAllDocsIn(dir):
   print '%s files are normal:' % lm
   print [d['id'] for d in normal_docs]
   print
-  print '%s files have no gender detected:' % ln
+  print '%s files have no %s detected:' % (ln, info_name)
   print [d['id'] for d in no_g_info_docs]
   print
-  print '%s files have conflicted gender info detected:' % lc
+  print '%s files have conflicted %ss info detected:' % (lc, info_name)
   print [d['id'] for d in conflicted_g_info_docs]
   print
   for d in conflicted_g_info_docs:
     print d['id']+'-'*50
-    for sent in d['g_info']:
-      print '%s\t%s\n' % (sent['sent_g_info'], sent['sent'])
+    for sent in d[info_n]:
+      print '%s\t%s\n' % (sent['sent_%s' % info_n], sent['sent'])
   print '%s + %s + %s = %s'%(lm, ln, lc, lt)
   print '%s / %s = %s' % (lm, lt, lm / lt)
   print '%s / %s = %s' % (ln, lt, ln / lt)
@@ -102,4 +108,5 @@ End of borrowing.
 '''
 
 if __name__ == '__main__':
-  testAllDocsIn('/home/yba/Documents/summer_2017/Arrhythmias/Arrhythmias')
+  testAllDocsIn('/home/yba/Documents/summer_2017/Arrhythmias/Arrhythmias', 'gender', 'g_info')
+  # print detectAge('A 987-YEAR-old man case of a 15-years old girl A 76-yearold man')
