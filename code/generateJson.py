@@ -131,7 +131,7 @@ def writeToJson(inFile, outFile, parseTool, isTrain, mentionType):
           entityMention['text'] = np
           entityMention['label'] = 'None'
           if parseTool == 'dbpedia':
-            entityMention['label'] = nps[np] # dbpedia returns the types
+            entityMention['label'] = nps[np] # dbpedia returns the types list
           entityMention['start'] = start
           entityMentions.append(entityMention)
           start += 1

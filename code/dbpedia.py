@@ -17,18 +17,26 @@ def getNes(r, sent):
   print json.dumps(r, indent=4, sort_keys=True)
   r = r['annotation']
   assert(r['@text'] == sent)
-  r = r['surfaceForm']
   nes = OrderedDict()
-  for x in r:
+  r = r.get('surfaceForm')
+  if not r: # no entity
+    return nes
+  for x in getList(r):
     name = x['@name']
-    if isinstance(x['resource'], list):
-      for y in x['resource']:
-        addTypesToNes(nes, name, y['@types'])
-    else:
-      addTypesToNes(nes, name, x['resource']['@types'])
+    for y in getList(x['resource']):
+      addTypesToNes(nes, name, y['@types'])
   print nes
   print '*'*50
   return nes
+
+def getList(x):
+  # x could be a dictionary or a list.
+  if isinstance(x, list):
+    return x
+  elif isinstance(x, dict):
+    return [x]
+  else:
+    raise RuntimeError('Unrecognized type %s' % type(x))
 
 def addTypesToNes(nes, name, types):
   if types:

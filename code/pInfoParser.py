@@ -6,10 +6,10 @@ import glob, re
 from nltk import sent_tokenize, word_tokenize
 from collections import defaultdict
 
-MALE = set(['male', 'man', 'dad', 'daddy', 'father', 'grandfather', \
+MALE = set(['he', 'male', 'man', 'dad', 'daddy', 'father', 'grandfather', \
 'grand-father', 'son', 'boy', 'uncle', 'sir', 'gentleman', 'husband'])
 
-FEMALE = set(['female', 'woman', 'mom', 'mother', 'mommy', 'grandmother', \
+FEMALE = set(['she', 'female', 'woman', 'mom', 'mother', 'mommy', 'grandmother', \
 'grand-mother', 'daughter', 'girl', 'aunt', 'lady', 'wife'])
 
 REG = set([r'\d+(?:-| )?year(?:s)?(?:-| )?old', \
@@ -215,7 +215,7 @@ def testAllDocsIn(dir, info_name, docs={}):
 
 def printStats(lists, info_name, info_getter):
   # lists must be [no_info_docs, normal_docs, conflicted_info_docs]
-  print '*'*20, info_name, '*'*20
+  print '*'*40, info_name, '*'*40
   assert(len(lists) == 3)
   no_info_docs = lists[0]
   normal_docs = lists[1]
@@ -226,14 +226,14 @@ def printStats(lists, info_name, info_getter):
   lt = lm + ln + lc
   print '%s files are normal:' % lm
   if DEBUG:
-    print [d.id for d in normal_docs]
+    print sort_nicely([d.id for d in normal_docs])
   print
   print '%s files have no %s detected:' % (ln, info_name)
   if DEBUG:
-    print [d.id for d in no_info_docs]
+    print sort_nicely([d.id for d in no_info_docs])
   print
   print '%s files have conflicted %ss info detected:' % (lc, info_name)
-  print [d.id for d in conflicted_info_docs]
+  print sort_nicely([d.id for d in conflicted_info_docs])
   print
   if DEBUG:
     for d in conflicted_info_docs:
@@ -255,10 +255,10 @@ def genderAgeCoDetection():
   lists_of_6 = getDocsStats(docs)
   lists_g = lists_of_6[0:3]
   lists_a = lists_of_6[3:6]
-  print '='*20, 'AFTER CO_RESOLUTION', '='*20
+  print '\n', '='*70, '\n', '='*20, 'AFTER CO_RESOLUTION', '='*20, '\n', '='*70
   lm3, ln3, lc3, conf_docs3 = printStats(lists_g, 'gender', Doc.getGenderInfo)
   lm4, ln4, lc4, conf_docs4 = printStats(lists_a, 'age', Doc.getAgeInfo)
-  print '='*40, 'Summary', '='*40
+  print '\n', '='*40, 'Summary', '='*40
   print 'Gender\n\t\tNormal\tNo_info\tConflict'
   print 'Before\t\t%s\t%s\t%s' % (lm1, ln1, lc1)
   print 'After\t\t%s\t%s\t%s' % (lm3, ln3, lc3)
